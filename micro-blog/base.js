@@ -31,27 +31,65 @@ function PostsHandler() {
 	this.posts= [];
 	console.log ('this.posts = ' + this.posts);
 	this.addListeners= function(){
-		$('#button-Post').on('click', function(){
-			ids++;
-			debugger;
-			content = $('.text-Input').val();
-		    name    = $('.name-Input').val();
-		    p = new Post(name,ids,content);
-		    console.log('the post is' + p);
-		    console.log('this is '+ this);
-		    console.log ('this.posts = ' + this.posts);
-		    posts.push(p);
-		    addPost(ids,name,content);
+		$('.text-Input').keydown(function(event){
+			if(event.keyCode == 13){
+	        	//$("#button-Post").click();
+	        		ids++;
+					debugger;
+					content = $('.text-Input').val();
+				    name    = $('.name-Input').val();
+				    if (content !==''){
+				    p = new Post(name,ids,content);
+				    console.log('the post is' + p);
+				    console.log('this is '+ this);
+				    console.log ('this.posts = ' + this.posts);
+				    posts.push(p);
+				    addPost(ids,name,content); 
+				    }else if (content ==='')
+				    {
+				    	alert("You should write something, try again");
+				    }	
+			}
+			
+
 		});
-		$('#button-com').on('click', function(){
+		$('#button-Post').on('click', function(){
+					ids++;
+					debugger;
+					content = $('.text-Input').val();
+				    name    = $('.name-Input').val();
+				   if (content !==''){
+				    p = new Post(name,ids,content);
+				    console.log('the post is' + p);
+				    console.log('this is '+ this);
+				    console.log ('this.posts = ' + this.posts);
+				    posts.push(p);
+				    addPost(ids,name,content); 
+				    }else if (content ==='')
+				    {
+				    	sweetAlert("Oops...", "You should wrtie something!", "error");
+				    }
+
+
+			});
+
+		$('.boxclose').on('click', function(){
 			alert('clicked');
 
 		});
 	};
 }
+/*
+$("#id_of_textbox").keyup(function(event){
+    if(event.keyCode == 13){
+        $("#id_of_button").click();
+    }
+});
+
+*/
 
 function addPost(ids,name,content){
-		var div ='<div id= \" '+ ids + '\"'+'class = "col-lg-3 col-sm-3 box1" style ="display:none"> <h1 id="hOne">'
+		var div ='<div id= \" '+ ids + '\"'+'class = "col-lg-3 col-sm-3 box1" style ="display:none"> <a class="boxclose" id="boxclose"></a> <h1 id="hOne">'
 		+ name + '</h1><p>'
 		+ content 
 		+ '</p><br/><a href="#" id="button-com" class="btn btn-danger btn-lg btn-huge lato" data-toggle="modal" data-target="#myModal"> Comment</a> ';
