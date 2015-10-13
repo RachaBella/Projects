@@ -5,6 +5,9 @@ $(document).ready(function(){
 
 	var posting = new PostsHandler();
 	posting.addListeners();
+
+
+
 	
 
 });
@@ -14,7 +17,8 @@ var content; // a content
 var p; // a post
 var div; // the div that will be added after every click
 var name; // the name of the poster
-var posts=[];
+var posts=[]; //an array for all the posts
+var com; //a comment
 
 function Post(name,id, content){
 	this.name=name;
@@ -40,9 +44,6 @@ function PostsHandler() {
 				    name    = $('.name-Input').val();
 				    if (content !==''){
 				    p = new Post(name,ids,content);
-				    console.log('the post is' + p);
-				    console.log('this is '+ this);
-				    console.log ('this.posts = ' + this.posts);
 				    posts.push(p);
 				    addPost(ids,name,content); 
 				    }else if (content ==='')
@@ -58,12 +59,12 @@ function PostsHandler() {
 					debugger;
 					content = $('.text-Input').val();
 				    name    = $('.name-Input').val();
-				   if (content !==''){
+				    if (content !==''){
 				    p = new Post(name,ids,content);
 				    console.log('the post is' + p);
 				    console.log('this is '+ this);
-				    console.log ('this.posts = ' + this.posts);
 				    posts.push(p);
+				    console.log('the posts are ' +posts);
 				    addPost(ids,name,content); 
 				    }else if (content ==='')
 				    {
@@ -71,28 +72,61 @@ function PostsHandler() {
 				    }
 
 
+		});
+		// This is the close button which will remove the post, from the html , and from the posts array, and the comments with
+		$(document).on('click','#boxclose', function(){
+			var id = $("#boxclose").closest("div").attr("id");
+  			$("#"+id).remove();
+  			posts.splice(id-1,1);
+  			console.log(posts[id-1]);
+  			swal("Post deleted!");
+		});
+
+		//This is the add comment button, where i will be adding comments
+		$(document).on('click','#button-com', function(){
+			$('#comment-box').css('visibility','visible');
+			$('#section1').css('opacity', '0.6');
+			$('#section2').css('opacity', '0.6');
+			var id = $(this).closest("div").attr("id");
+			console.log('c est le coment de '+ id);
+			$(document).on('click','.com-button', function(){
+				name = $(this).parent().find('#name').val();
+				com  = $(this).parent().find('#com').val();
+				console.log('the commet is ' + com+ ' name is ' + name);
+				if (com !==''){
+				console.log("the id is : "+ id);
+				$('#'+id).append('<p><strong>'+ name+' </strong>'+ com+ '<br>');
+				$('#comment-box').css('visibility','hidden');
+				$('#section1').css('opacity', '1');
+				$('#section2').css('opacity', '1');
+				$(this).parent().find('#name').val('');
+			    $(this).parent().find('#com').val('');
+			    id='';
+				
+				}else if(com === ''){
+					sweetAlert("Oops...", "You should wrtie something!", "error");
+				}
 			});
 
-		$('.boxclose').on('click', function(){
-			alert('clicked');
+			$(document).on('click','.cancel-button', function(){
+				$('#comment-box').css('visibility','hidden');
+				$('#section1').css('opacity', '1');
+				$('#section2').css('opacity', '1');
 
+			}); 					
 		});
+
+
+		
 	};
 }
-/*
-$("#id_of_textbox").keyup(function(event){
-    if(event.keyCode == 13){
-        $("#id_of_button").click();
-    }
-});
 
-*/
 
 function addPost(ids,name,content){
-		var div ='<div id= \" '+ ids + '\"'+'class = "col-lg-3 col-sm-3 box1" style ="display:none"> <a class="boxclose" id="boxclose"></a> <h1 id="hOne">'
+		var div ='<div id= \"'+ ids + '\"'+'class = "col-lg-3 col-sm-3 box1" style ="display:none"> <a class="boxclose" id="boxclose"></a> <h1 id="hOne">'
 		+ name + '</h1><p>'
 		+ content 
-		+ '</p><br/><a href="#" id="button-com" class="btn btn-danger btn-lg btn-huge lato" data-toggle="modal" data-target="#myModal"> Comment</a> ';
+		+ '</p><br/><a href="#" id="button-com" class="btn btn-danger btn-lg btn-huge lato" data-toggle="modal" data-target="#myModal"> Comment</a><br><hr> ';
 		$('.row1').prepend(div);
 		$(".col-sm-3").slideDown('slow');
 		$('.text-Input').val('');
