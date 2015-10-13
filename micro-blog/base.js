@@ -45,7 +45,8 @@ function PostsHandler() {
 				    if (content !==''){
 				    p = new Post(name,ids,content);
 				    posts.push(p);
-				    addPost(ids,name,content); 
+				    addPost(ids,name,content);
+				    $('.post-num').val(''+posts.length); 
 				    }else if (content ==='')
 				    {
 				    	alert("You should write something, try again");
@@ -80,6 +81,7 @@ function PostsHandler() {
   			posts.splice(id-1,1);
   			console.log(posts[id-1]);
   			swal("Post deleted!");
+  			$('.post-num').val(''+posts.length);
 		});
 
 		//This is the add comment button, where i will be adding comments
