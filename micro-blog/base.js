@@ -87,26 +87,27 @@ function PostsHandler() {
 			$('#comment-box').css('visibility','visible');
 			$('#section1').css('opacity', '0.6');
 			$('#section2').css('opacity', '0.6');
-			var id = $(this).closest("div").attr("id");
-			console.log('c est le coment de '+ id);
+		    id = $(this).closest("div").attr("id");
+			console.log('it is the id :  '+ id);
 			$(document).on('click','.com-button', function(){
 				name = $(this).parent().find('#name').val();
 				com  = $(this).parent().find('#com').val();
 				console.log('the commet is ' + com+ ' name is ' + name);
 				if (com !==''){
-				console.log("the id is : "+ id);
-				$('#'+id).append('<p><strong>'+ name+' </strong>'+ com+ '<br>');
 				$('#comment-box').css('visibility','hidden');
 				$('#section1').css('opacity', '1');
 				$('#section2').css('opacity', '1');
-				$(this).parent().find('#name').val('');
-			    $(this).parent().find('#com').val('');
-			    id='';
-				
 				}else if(com === ''){
 					sweetAlert("Oops...", "You should wrtie something!", "error");
 				}
+				if((name!=='')&&(com !=='')){
+				$('#'+id).append('<p><strong>'+ name+' </strong>'+ com+ '<br>');
+
+				}
+				$(this).parent().find('#name').val('');
+			    $(this).parent().find('#com').val('');
 			});
+			
 
 			$(document).on('click','.cancel-button', function(){
 				$('#comment-box').css('visibility','hidden');
