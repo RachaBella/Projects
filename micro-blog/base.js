@@ -98,7 +98,7 @@ function PostsHandler() {
 				$('#section1').css('opacity', '1');
 				$('#section2').css('opacity', '1');
 				}else if(com === ''){
-					sweetAlert("Oops...", "You should wrtie something!", "error");
+					
 				}
 				if((name!=='')&&(com !=='')){
 				$('#'+id).append('<p><strong>'+ name+' </strong>'+ com+ '<br>');

@@ -15,6 +15,8 @@ h1 {
 
 
 #button-Post  {
+	font-size: 17px;
+  	font-weight: 600;
 	background-color:#ddff00;
 	-moz-border-radius:28px;
 	-webkit-border-radius:28px;
@@ -24,8 +26,7 @@ h1 {
 	cursor:pointer;
 	color:#333333;
 	font-family:Arial;
-	font-size:17px;
-	padding:16px 31px;
+	padding:15px 30px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #ffee66;
 
@@ -246,7 +247,7 @@ input#com{
 #icon {
   display: inline-block;
   width: 30px;
-  background-color: #3a57af;
+  background-color: #ddff00;
   padding: 8px 0px 8px 15px;
   margin-left: 15px;
   -webkit-border-radius: 4px 0px 0px 4px; 
@@ -262,7 +263,7 @@ input#com{
 a.com-button {
   font-size: 14px;
   font-weight: 600;
-  color: white;
+  color: black;
   padding: 6px 25px 0px 15px;
   margin: 10px 8px 20px 0px;
   display: inline-block;
@@ -273,7 +274,7 @@ a.com-button {
   -webkit-border-radius: 5px; 
   -moz-border-radius: 5px; 
   border-radius: 5px; 
-  background-color: #3a57af; 
+  background-color: #ddff00; 
   -webkit-box-shadow: 0 3px rgba(58,87,175,.75); 
   -moz-box-shadow: 0 3px rgba(58,87,175,.75); 
   box-shadow: 0 3px rgba(58,87,175,.75);
@@ -284,7 +285,7 @@ a.com-button {
 
 a.com-button:hover {
   top: 3px;
-  background-color:#2e458b;
+  background-color:#d8e617;
   -webkit-box-shadow: none; 
   -moz-box-shadow: none; 
   box-shadow: none;
@@ -293,7 +294,7 @@ a.com-button:hover {
 a.cancel-button {
   font-size: 14px;
   font-weight: 600;
-  color: white;
+  color: black;
   padding: 6px 25px 0px 15px;
   margin: 10px 8px 20px 0px;
   display: inline-block;
@@ -304,7 +305,7 @@ a.cancel-button {
   -webkit-border-radius: 5px; 
   -moz-border-radius: 5px; 
   border-radius: 5px; 
-  background-color: #3a57af; 
+  background-color: #ddff00; 
   -webkit-box-shadow: 0 3px rgba(58,87,175,.75); 
   -moz-box-shadow: 0 3px rgba(58,87,175,.75); 
   box-shadow: 0 3px rgba(58,87,175,.75);
@@ -314,7 +315,7 @@ a.cancel-button {
 }
 a.cancel-button:hover {
   top: 3px;
-  background-color:#2e458b;
+  background-color:#d8e617;
   -webkit-box-shadow: none; 
   -moz-box-shadow: none; 
   box-shadow: none;
