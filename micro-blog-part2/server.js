@@ -60,6 +60,17 @@ app.post('/', function (req, res){
 	});
 });
 
+app.delete('/api/posts/:id', function (req, res) {
+	var id= req.params.id;
+	console.log('the id is : '+ id)
+	db.Post.remove({ _id: id }, function (error, post){
+		if(error){
+			console.log(" there was an error ! sorry" , error);
+		}
+		res.send(post);
+	});
+});
+
 // 
 app.listen(4000, function (){
   console.log("listening on port 4000 ... success :)");

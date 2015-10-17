@@ -44,7 +44,17 @@ function pageLoad(){
 
 	//When I click on the 'close' button
 	$(document).on('click', '#boxclose', function(){
-
+		var parentId = $(this).parent().attr('id');
+		console.log('the id of that post is : ' + parentId);
+		$.ajax ({
+			url: '/api/posts/' + parentId,
+			type: 'DELETE',
+			success : function (response){
+				console.log(response ," sucess deleting");
+				$("#"+parentId).remove();
+				swal("Post deleted!");
+			}
+		});
 	});
 
 	//When i click on the comment button
