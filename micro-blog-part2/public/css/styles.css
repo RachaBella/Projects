@@ -12,7 +12,15 @@ h1 {
   text-align: center;
 }
 
+a.link {
+  color:#000;
+  text-decoration: none;
 
+}
+a.link:hover{
+  color:grey;
+  
+}
 
 #button-Post  {
 	font-size: 17px;
@@ -357,6 +365,26 @@ a.cancel-button:hover {
   position: fixed;
   
 }
+.singlePost {
+  border-radius:100%;
+  width: 600px;
+  height: 600px;
+  border:1px solid #ffaa22;
+  margin-left: 100px;
+}
+.singlePost:hover,
+.singlePost:focus,
+.singlePost:active {
+  background-color: #ddff00;
+  -webkit-animation-name:bounce;
+  -webkit-animation-duration:2s;
+  -webkit-animation-iteration-count:4;
+  -webkit-animation-direction:alternate;
+}@-webkit-keyframes bounce{from{margin:0px 40px 20px 100px;}
+    to{margin:200px 40px 150px 300px;}
+}
+
+
 
 
 

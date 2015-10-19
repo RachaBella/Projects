@@ -32,7 +32,7 @@
             <div class=" col-lg-12 text-center">
               <form id="post-form" action="/api/posts" method="POST">
                 <br>
-                <input class='post-num'  type='text'> 
+                <input class='post-num'  type='text'><%=posts.length%></input>
                 <input class='name-Input' placeholder="name" name="name" type='text'> 
                 <input class='text-Input' placeholder="your post" name="content" type='text'>
                 <a href="#" id='button-Post' class="btn btn-danger btn-lg btn-huge lato" type="submit" action='submit'> Post it</a>
@@ -52,14 +52,21 @@
         <div class="container v-center">
             <div class="row row1">
             <% for (var i =0; i< posts.length; i++) { %>
-              <div id= "<%= posts[i].id%>" class = "col-lg-3 col-sm-3 box1"> 
+              <div id= "<%= posts[i]._id%>" class = "col-lg-3 col-sm-3 box1"> 
                 <a class="boxclose" id="boxclose"></a> 
                 <h1 id="hOne"><%= posts[i].name%></h1>
-                <p><%= posts[i].content%></p>
+                <a class="link"  href="/index1/<%=posts[i]._id%>" >
+                <p class= "postLink"><%= posts[i].content%></p>
+                </a>
                 <br/>
-                <a href="#" id="button-com" class="btn btn-danger btn-lg btn-huge lato" data-toggle="modal" data-target="#myModal">Comment</a><br><hr>
+                <a href="#" id="button-com" class="btn btn-danger btn-lg btn-huge lato" data-toggle="modal" data-target="#myModal">Comment
+                </a><br><hr>
+                <% for (var j=0; j < posts[i].stories.length; j++) { %>
+                <p><strong> <%= posts[i].stories[j].name %></strong> <%= posts[i].stories[j].content%><br> 
+                  <% } %>
               </div>
             <% } %>
+            </div>
             <!--/row-->
     </section> 
     <div id='comment-box'>
@@ -67,7 +74,7 @@
       <form action="/">
         <hr>
         <label id="icon" for="name"><i class="icon-user"></i></label>
-        <input type="text" name="name" id="name" placeholder="Name" required/>
+        <input type="text" name="nameC" id="name" placeholder="Name" required/>
         <label id="icon" for="com"><i class="icon-shield"></i></label>
         <input type="text-area" name="com" id="com" placeholder="your comment" required/>
         <a href="#" class="com-button">Comment</a>
