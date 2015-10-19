@@ -15,7 +15,7 @@ function pageLoad(){
 				console.log('the values : ' + newPost.name +' ' + newPost.content +' '+ Date.now());
 				debugger;
 				if(newPost.content !== ''){
-					addPost(newPost.id,newPost.name,newPost.content);
+					addPost(newPost._id,newPost.name,newPost.content);
 				}else if ((newPost.content === '')||(newPost.name === '')){
 					sweetAlert("Oops...", "You should wrtie something!", "error");
 				}
