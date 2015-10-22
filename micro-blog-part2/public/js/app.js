@@ -30,14 +30,16 @@ function pageLoad(){
 		event.preventDefault();
 		var parentId = $(this).parent().attr('id');
 		console.log("the parent id is : "+ parentId);
+
+		if ($('.text-Input').val() === ''){
+				sweetAlert("Oops...", "You should wrtie something!", "error");
+		}
 		$.post("/api/posts", $("#"+parentId).serialize(), function (response){
 			var newPost = response;
 			console.log('the values : ' + newPost.name +' ' + newPost.content);
 			debugger;
 			if(newPost.content !== ''){
 				addPost(newPost._id,newPost.name,newPost.content);
-			}else if (newPost.content === ''){
-				sweetAlert("Oops...", "You should wrtie something!", "error");
 			}
 		});
 		$(this).parent().find('.name-Input').val('');

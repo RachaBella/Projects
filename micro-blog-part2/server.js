@@ -23,7 +23,6 @@ app.get('/', function (req, res){
 			console.log(" error: " + error);
 		}
 		db.Post.find().populate('stories').exec(function (error, posts) {
-			console.log()
 			if (error){
 			console.log(" error: " + error);
 			}
