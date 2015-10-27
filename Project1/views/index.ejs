@@ -32,9 +32,13 @@
     ================================================== -->
     <link rel="stylesheet" type="text/css"  href="/static/css/style.css">
     <link rel="stylesheet" type="text/css" href="/static/css/responsive.css">
+    <link rel="stylesheet" href="/static/css/normalize.css">
+    <link rel="stylesheet" href="/static/css/style2.css">
+    <link rel="stylesheet" href="/static/dist/sweetalert.css">
 
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
 
     <script type="text/javascript" src="/static/js/modernizr.custom.js"></script>
 
@@ -62,8 +66,8 @@
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1 bs-slide-dropdown">
+          <ul class="nav navbar-nav navbar-right" id="ulNav">
             <li><a href="#tf-home" class="page-scroll">Home</a></li>
             <li><a href="#tf-about" class="page-scroll">About</a></li>
             <li><a href="#tf-team" class="page-scroll">Team</a></li>
@@ -71,12 +75,13 @@
             <li><a href="#tf-works" class="page-scroll">Search</a></li>
             <li><a href="#tf-testimonials" class="page-scroll">Testimonials</a></li>
             <li><a href="#tf-contact" class="page-scroll">Contact</a></li>
-            <li><a href="#tf-contact" class="page-scroll">Sign In</a></li>
+            <li><a  class="page-scroll" id='signButton'>Sign In</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
 
+    
     <!-- Home Page
     ==========================================-->
     <div id="tf-home" class="text-center">
@@ -88,6 +93,69 @@
             </div>
         </div>
     </div>
+
+     <!-- Sign up/ Sign in form -->
+    <div class="form" id="tf-sign" style="display:none">
+        <a class="boxclose" id="boxclose"></a> 
+        <ul class="tab-group">
+            <li class="tab active"><a href="#signup">Sign Up</a></li>
+            <li class="tab"><a href="#login">Log In</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="signup">   
+                <h1>Sign Up for Free</h1>
+                <form  id ='signupForm'action="/" method="post">
+                    <div class="top-row">
+                        <div id='field1' class="field-wrap">
+                          <label>
+                            First Name<span class="req">*</span>
+                          </label>
+                          <input type="text" name='firstName' id='firstName' required autocomplete="off" />
+                        </div>
+                        <div id='field2' class="field-wrap">
+                          <label>
+                            Last Name<span class="req">*</span>
+                          </label>
+                          <input name ='lastName' id='lastName' type="text"required autocomplete="off"/>
+                        </div>
+                    </div>
+                    <div id='field3' class="field-wrap">
+                        <label>
+                          Email Address<span class="req">*</span>
+                        </label>
+                        <input type="email" name ="email" id= "email" required autocomplete="off"/>
+                    </div>
+                    <div  id='field4' class="field-wrap">
+                        <label>
+                          Set A Password<span class="req">*</span>
+                        </label>
+                        <input type="password" name="password" id="password" required autocomplete="off"/>
+                    </div>
+                    <button type="submit" id='signUp' class="button button-block"/>Get Started</button>
+                </form>
+            </div>
+            <div id="login">   
+                <h1>Welcome Back!</h1>
+                <form  id='loginForm'action="/" method="post">
+                    <div id='field5' class="field-wrap">
+                        <label>
+                          Email Address<span class="req">*</span>
+                        </label>
+                        <input type="email" name ="email2" id="email2" required autocomplete="off"/>
+                    </div>
+                    <div id='field6' class="field-wrap">
+                        <label>
+                          Password<span class="req">*</span>
+                        </label>
+                        <input type="password" name="password2" id="password2" required autocomplete="off"/>
+                    </div>
+                    <p class="forgot"><a href="#">Forgot Password?</a></p>
+                    <button id ='logIn' class="button button-block"/>Log In</button>
+                </form>
+            </div> <!-- div login  -->
+        </div><!-- tab-content -->
+    </div> <!-- /form -->
+
 
     <!-- About Us Page
     ==========================================-->
@@ -248,7 +316,7 @@
             <div class="row">
                 <div class="col-md-3 col-sm-6 service">
                     <i class="fa fa-stethoscope"></i>
-                    <h4><a href='#'><strong>Advice Searching</strong></a></h4>
+                    <h4><a href='#tf-works'><strong>Advice Searching</strong></a></h4>
                     <p> If you need an advice, just type a keyword and we will help you in the search page </p>
                 </div>
 
@@ -269,46 +337,6 @@
                     <h4><a href='#'><strong>Other</strong></a></h4>
                     <p>Check out our other services here</p>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Clients Section
-    ==========================================-->
-    <div id="tf-clients" class="text-center">
-        <div class="overlay">
-            <div class="container">
-
-                <div class="section-title center">
-                    <h2>Some of <strong>our Clients</strong></h2>
-                    <div class="line">
-                        <hr>
-                    </div>
-                </div>
-                <div id="clients" class="owl-carousel owl-theme">
-                    <div class="item">
-                        <img src="/static/img/client/01.png">
-                    </div>
-                    <div class="item">
-                        <img src="/static/img/client/02.png">
-                    </div>
-                    <div class="item">
-                        <img src="/static/img/client/03.png">
-                    </div>
-                    <div class="item">
-                        <img src="/static/img/client/04.png">
-                    </div>
-                    <div class="item">
-                        <img src="/static/img/client/05.png">
-                    </div>
-                    <div class="item">
-                        <img src="/static/img/client/06.png">
-                    </div>
-                    <div class="item">
-                        <img src="/static/img/client/07.png">
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
@@ -355,7 +383,7 @@
 
             <div id="lightbox" class="row" style="position: relative; overflow: hidden;">
 
-                <div class="col-sm-6 col-md-3 col-lg-3 branding">
+                <div class="col-sm-6 col-md-3 col-lg-3 ">
                     <div class="portfolio-item">
                         <div class="hover-bg">
                             <a href="#">
@@ -371,7 +399,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-6 col-md-3 col-lg-3 photography app">
+                <div class="col-sm-6 col-md-3 col-lg-3 ">
                     <div class="portfolio-item">
                         <div class="hover-bg">
                             <a href="#">
@@ -387,7 +415,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-6 col-md-3 col-lg-3 branding">
+                <div class="col-sm-6 col-md-3 col-lg-3 ">
                     <div class="portfolio-item">
                         <div class="hover-bg">
                             <a href="#">
@@ -403,7 +431,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-6 col-md-3 col-lg-3 branding">
+                <div class="col-sm-6 col-md-3 col-lg-3">
                     <div class="portfolio-item">
                         <div class="hover-bg">
                             <a href="#">
@@ -419,7 +447,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-6 col-md-3 col-lg-3 web">
+                <div class="col-sm-6 col-md-3 col-lg-3 ">
                     <div class="portfolio-item">
                         <div class="hover-bg">
                             <a href="#">
@@ -435,7 +463,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-6 col-md-3 col-lg-3 app">
+                <div class="col-sm-6 col-md-3 col-lg-3 ">
                     <div class="portfolio-item">
                         <div class="hover-bg">
                             <a href="#">
@@ -451,7 +479,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-6 col-md-3 col-lg-3 photography web">
+                <div class="col-sm-6 col-md-3 col-lg-3 ">
                     <div class="portfolio-item">
                         <div class="hover-bg">
                             <a href="#">
@@ -467,7 +495,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-6 col-md-3 col-lg-3 web">
+                <div class="col-sm-6 col-md-3 col-lg-3 ">
                     <div class="portfolio-item">
                         <div class="hover-bg">
                             <a href="#">
@@ -568,6 +596,8 @@
         </div>
     </div>
 
+
+
     <nav id="footer">
         <div class="container">
             <div class="pull-left fnav">
@@ -584,21 +614,24 @@
         </div>
     </nav>
 
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script type="text/javascript" src="/static/js/jquery.1.11.1.js"></script>
+     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script type="text/javascript" src="/static/js/bootstrap.js"></script>
     <script type="text/javascript" src="/static/js/SmoothScroll.js"></script>
     <script type="text/javascript" src="/static/js/jquery.isotope.js"></script>
 
     <script src="/static/js/owl.carousel.js"></script>
+     <script src="/static/dist/sweetalert.min.js"></script>
 
     <!-- Javascripts
     ================================================== -->
     <script type="text/javascript" src="/static/js/main.js"></script>
     <script type="text/javascript" src="/static/js/app.js"></script>
+    <script type="text/javascript" src="/static/js/index.js"></script>
 
   </body>
 </html>

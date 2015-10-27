@@ -625,3 +625,32 @@ nav#footer p{
 #searchButton{
 	cursor: pointer;
 }
+
+a.boxclose{
+    float:right;
+    margin-top:-51px;
+    margin-right:-48px;
+    cursor:pointer;
+    color: #fff;
+    border: 1px solid #AEAEAE;
+    border-radius: 67px;
+    background: #FCAC45;
+    font-size: 31px;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 0px;
+    padding: 16px 7px;       
+}
+
+.boxclose:before {
+    content: "×";
+    margin-bottom: 2px;
+
+}
+
+#signButton {
+	cursor:pointer;
+}
+#special:hover{
+	background-color: transparent;
+}

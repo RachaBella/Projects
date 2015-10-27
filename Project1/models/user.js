@@ -7,29 +7,32 @@ var userSchema = new Schema ({
 	firstName :String,
 	lastName : String,
 	address : String,
-	email: String,
+	email: {
+		type:String,
+		require:true,
+		unique:true
+	},
 	passwordDigest: String,
 	medicalRecord:Array,
 	keywordsTyped: [{type: Schema.Types.ObjectId, ref: 'Keyword'}],
 	network:String
 });
 
-userSchema.statics.createSecure = function (firstName, lastName, address, email, password,network, callback) {
+userSchema.statics.createSecure = function (firstName, lastName, email, password, callback) {
 	var user = this;
+	//console.log("we are in the secure function creation");
     // hash password user enters at sign up
     bcrypt.genSalt(function (err, salt) {
-	    bcrypt.hash(password, salt, function (err, hash) {
-		    console.log(hash);
+	    bcrypt.hash (password, salt, function (err, hash) {
+		    //console.log(hash);
 		        // create the new user (save to db) with hashed password
 		    user.create({
 		        firstName:firstName,
-		        lastName: lastName,
-		        address:address,	
+		        lastName: lastName,	
 		        email: email,
 		        passwordDigest: hash,
 		        medicalRecord:[],
 		        keywordsTyped:[],
-		        network:network
 		        }, callback);
 		});
 	});
@@ -44,10 +47,12 @@ userSchema.statics.authenticate = function (password, email, callback) {
       // throw error if can't find user
       if (!user) {
         console.log('No user with email ' + email);
-
+        callback (null, 'wrong email');
       // if found user, check if password is correct
       } else if (user.checkPassword(password)) {
         callback(null, user);
+      }else {
+      	callback("Error: incorrect password", null);
       }
     });
   };
