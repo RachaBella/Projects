@@ -2504,6 +2504,10 @@ input[type="checkbox"] {
 }
 input[type="file"] {
   display: block;
+  border: 0px;
+  margin-left: 34px;
+  height: 30px;
+  line-height: 30px;
 }
 input[type="range"] {
   display: block;
